@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Mon Spotify API
+  description: >
+    C'est mon API Spotify
+  termsOfService: 
+  contact:
+    email: 
+  version: 1.0.0
+externalDocs:
+  description: Any document link you want to generate along with API.
+  url: http://swagger.io
+servers:
+  - url: https://test.ipam.be/v1
+tags:
+  - name: song
+    description: My Song
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+
+paths:
+  /api/v1/songs/{songId}:
+    get:
+      tags:
+        - song
+      summary: Returns the song
+      description: Returns the song
+      operationId: getSongById
+      parameters:
+        - name: songId
+          in: path
+          description: Customer Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: successful operation
+          content: {}
+        404:
+          description: Given song ID doesn't exist
+          content: {}
+    delete:
+      tags:
+        - song
+      summary: Delete the song
+      description: Deletes the song
+      operationId: deleteSong
+      parameters:
+        - name: songId
+          in: path
+          description: song id
+          required: true
+          schema:
+            type: number
+      responses:
+        204:
+          description: successful operation
+        404:
+          description: Given song ID doesn't exist
+          content: {}
+components:
+  schemas:
+    Song:
+      description: A Song Class
+      type: object
+      properties:
+        songId:
+          description: id
+          type: number
+        name:
+          description: name.
+          type: string
